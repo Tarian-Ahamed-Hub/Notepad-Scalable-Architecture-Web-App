@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0f172a;
+  min-height: 100vh;
+  color: #e2e8f0;
+}
+
+/* HomePage Styles */
+.homepage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.homepage-welcome {
+  text-align: center;
+  color: #e2e8f0;
+  margin-bottom: 50px;
+}
+
+.homepage-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #f1f5f9;
+}
+
+.homepage-subtitle {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin-bottom: 50px;
+}
+
+.homepage-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.homepage-feature-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 30px 25px;
+  border: 1px solid #334155;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.homepage-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: #475569;
+}
+
+.homepage-feature-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.homepage-feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #f1f5f9;
+}
+
+.homepage-feature-card p {
+  color: #94a3b8;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* CreateNote Component Styles */
+.createnote-container {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.createnote-open-btn {
+  width: 60%;
+  
+  padding: 12px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+
+.createnote-open-btn:hover {
+  background: #2563eb;
+}
+
+.createnote-form {
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid #334155;
+}
+
+.createnote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.createnote-form-title {
+  font-size: 1.3rem;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.createnote-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: color 0.2s ease;
+}
+
+.createnote-close-btn:hover {
+  color: #cbd5e1;
+}
+
+.createnote-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+  color: #e2e8f0;
+}
+
+.createnote-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.createnote-create-btn {
+  width: 100%;
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.createnote-create-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.createnote-create-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* NotePage Styles */
+.notepage-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.notepage-loading,
+.notepage-error {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #94a3b8;
+  border: 1px solid #334155;
+}
+
+.notepage-error {
+  color: #f87171;
+  border-color: #7f1d1d;
+}
+
+.notepage-content {
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 30px;
+  border: 1px solid #334155;
+}
+
+.notepage-header {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 15px;
+}
+
+.notepage-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 15px;
+}
+
+.notepage-title {
+  font-size: 2rem;
+  color: #f1f5f9;
+  margin: 0;
+}
+
+.notepage-copy-link-btn {
+  padding: 8px 16px;
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.notepage-copy-link-btn:hover {
+  background: #7c3aed;
+}
+
+.notepage-meta {
+  display: flex;
+  gap: 25px;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.notepage-editor {
+  margin-bottom: 30px;
+}
+
+.notepage-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+}
+
+.notepage-textarea {
+  width: 100%;
+  padding: 12px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: none;
+  transition: border-color 0.3s ease;
+  color: #e2e8f0;
+  height: 1000px;
+  overflow-y: auto;
+}
+
+.notepage-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.notepage-update-btn {
+  margin-top: 12px;
+  padding: 8px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.notepage-update-btn:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.notepage-update-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.notepage-comments-section {
+  border-top: 1px solid #334155;
+  padding-top: 25px;
+}
+
+.notepage-comments-title {
+  font-size: 1.5rem;
+  color: #f1f5f9;
+  margin-bottom: 20px;
+}
+
+.notepage-comment-form {
+  margin-bottom: 25px;
+}
+
+.notepage-comment-input {
+  width: 100%;
+  padding: 12px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 12px;
+  transition: border-color 0.3s ease;
+  color: #e2e8f0;
+}
+
+.notepage-comment-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.notepage-post-btn {
+  padding: 8px 20px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.notepage-post-btn:hover:not(:disabled) {
+  background: #059669;
+}
+
+.notepage-post-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.notepage-comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.notepage-comment {
+  background: #0f172a;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 3px solid #3b82f6;
+}
+
+.notepage-comment-content {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.notepage-comment-date {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.notepage-no-comments {
+  text-align: center;
+  color: #64748b;
+  padding: 30px;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .homepage-title {
+    font-size: 2rem;
+  }
+
+  .homepage-subtitle {
+    font-size: 1rem;
+  }
+
+  .notepage-title {
+    font-size: 1.6rem;
+  }
+
+  .notepage-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .createnote-container,
+  .notepage-container {
+    padding: 20px 15px;
+  }
+
+  .notepage-content {
+    padding: 20px 18px;
+  }
+}

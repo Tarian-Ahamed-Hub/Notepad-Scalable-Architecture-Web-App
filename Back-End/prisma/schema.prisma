@@ -1,0 +1,65 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Note {
+  id      String @id @default(uuid()) @db.Uuid
+  name    String @unique
+  content String @default("") @db.VarChar(5000)
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(6)
+  comments  Comment[]
+  tags      NoteTag[]
+
+  @@index([name])
+  @@index([createdAt(sort: Desc)])
+  @@index([updatedAt(sort: Desc)])
+}
+
+model Comment {
+  id        String   @id @default(uuid()) @db.Uuid
+  noteId    String   @db.Uuid
+  note      Note     @relation(fields: [noteId], references: [id])
+  content   String
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([createdAt(sort: Desc)])
+}
+
+model Tag {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @unique
+  slug      String   @unique  
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  
+  notes     NoteTag[]  
+
+  @@index([name])
+  @@index([slug])
+}
+
+
+model NoteTag {
+  id        String   @id @default(uuid()) @db.Uuid
+  noteId    String   @db.Uuid
+  valid     Boolean?
+  tagId     String   @db.Uuid
+  
+  note      Note     @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([noteId, tagId]) 
+  @@index([noteId])
+  @@index([tagId])
+}
+
+
+
